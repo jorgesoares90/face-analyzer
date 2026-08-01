@@ -47,7 +47,7 @@
   .bar i{position:absolute;inset:0;border-radius:4px;background:var(--grad)}
   table{width:100%;border-collapse:collapse}
   th{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);text-align:left;font-weight:600;padding:0 14px 12px}
-  td{font-size:13.5px;color:var(--txt);padding:13px 14px;border-top:1px solid rgba(212,150,130,.16);line-height:1.45}
+  td{font-size:13px;color:var(--txt);padding:10px 14px;border-top:1px solid rgba(212,150,130,.16);line-height:1.4}
   td.area{font-weight:600;color:var(--rose-soft);white-space:nowrap}
   td.obj{color:var(--muted);font-size:12.5px}
   .disc{border:1px solid var(--line-strong);border-radius:14px;padding:22px 26px;background:rgba(207,143,124,.06)}
@@ -84,7 +84,7 @@
     <div class="brand">
       <img src="https://raw.githubusercontent.com/jorgesoares90/face-analyzer/main/logo.png" alt="Amanda Soares · Odontologia Especializada" style="height:66px">
     </div>
-    <div class="pg">02 · 03</div>
+    <div class="pg">Análise</div>
   </div>
   <div class="hair hd-rule"></div>
 
@@ -146,16 +146,52 @@
     </div>
   </div>
 
-  <div class="foot"><span>Medidas calculadas sobre 478 pontos faciais detectados por IA</span><span>02</span></div>
+  <div class="foot"><span>Medidas calculadas sobre 478 pontos faciais detectados por IA</span><span>Amanda Soares</span></div>
 </div>
 
-<!-- ══════════ PÁGINA 3 · CARDÁPIO + AVISO ══════════ -->
+<!--PAG_SIM_INI-->
+<!-- ══════════ PÁGINA · ANTES & DEPOIS (SIMULAÇÃO IA) ══════════ -->
 <div class="page">
   <div class="hd">
     <div class="brand">
       <img src="https://raw.githubusercontent.com/jorgesoares90/face-analyzer/main/logo.png" alt="Amanda Soares · Odontologia Especializada" style="height:66px">
     </div>
-    <div class="pg">03 · 03</div>
+    <div class="pg">Simulação</div>
+  </div>
+  <div class="hair hd-rule"></div>
+
+  <div class="h2">Antes &amp; <span class="goldtxt">depois</span></div>
+  <div class="sub">Simulação ilustrativa por IA · áreas escolhidas por você</div>
+
+  <div style="display:flex;gap:24px;margin-top:36px;justify-content:center">
+    <div class="photo-wrap" style="width:440px;height:587px;flex:none">
+      <img src="__FOTO__" alt="">
+      <div class="ph-tag">Antes · registro atual</div>
+    </div>
+    <div class="photo-wrap" style="width:440px;height:587px;flex:none">
+      <img src="__FOTO_DEPOIS__" alt="">
+      <div class="ph-tag">Depois · simulação ilustrativa</div>
+    </div>
+  </div>
+
+  <div id="areas-sim" class="sub" style="margin-top:24px;text-align:center;letter-spacing:2px"></div>
+
+  <div class="disc" style="margin-top:26px">
+    <div class="t">Sobre esta simulação</div>
+    <p>A imagem "depois" foi gerada por inteligência artificial a partir da sua própria foto, como referência visual da direção estética do tratamento. Ela <b style="color:var(--rose-soft)">não é promessa nem garantia de resultado</b> — cada pessoa tem anatomia e resposta biológica únicas, e o resultado real pode ser diferente do simulado.</p>
+  </div>
+
+  <div class="foot"><span>Simulação ilustrativa · não representa promessa de resultado</span><span>Amanda Soares</span></div>
+</div>
+<!--PAG_SIM_FIM-->
+
+<!-- ══════════ PÁGINA · CARDÁPIO + AVISO ══════════ -->
+<div class="page">
+  <div class="hd">
+    <div class="brand">
+      <img src="https://raw.githubusercontent.com/jorgesoares90/face-analyzer/main/logo.png" alt="Amanda Soares · Odontologia Especializada" style="height:66px">
+    </div>
+    <div class="pg">Protocolo</div>
   </div>
   <div class="hair hd-rule"></div>
 
@@ -168,7 +204,7 @@
       <div class="kicker">Protocolo sugerido · doses estimadas</div>
       <div class="hair" style="flex:1"></div>
     </div>
-    <div id="doses-cards" style="display:flex;gap:20px"></div>
+    <div id="doses-cards" style="display:flex;flex-wrap:wrap;gap:16px"></div>
     <div class="note" style="margin-top:12px">Faixas típicas para a severidade identificada na análise · a dose final é sempre definida pela profissional na avaliação presencial</div>
   </div>
 
@@ -264,15 +300,22 @@ const DADOS = __DADOS__;
     DADOS.protocolo.forEach((pr, i) => {
       const c = document.createElement('div');
       c.className = 'card';
-      c.style.flex = '1';
+      c.style.flex = '0 0 31.5%';
+      c.style.padding = '16px 18px';
+      const sevTxt = pr.severidade === 'a avaliar' ? 'Indicação a avaliar' : 'Déficit ' + pr.severidade;
       c.innerHTML =
-        '<div class="serif goldtxt" style="font-size:30px;font-weight:600">0' + (i + 1) + '</div>' +
-        '<div style="font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--rose-soft);font-weight:600;margin-top:8px">' + pr.area + '</div>' +
-        '<div class="big goldtxt" style="font-size:34px;margin-top:10px">' + pr.faixa + '</div>' +
-        '<div class="note">Déficit ' + pr.severidade + ' · ' + pr.produto + '</div>';
+        '<div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rose-soft);font-weight:600">' + pr.area + '</div>' +
+        '<div class="big goldtxt" style="font-size:32px;margin-top:8px">' + pr.faixa + '</div>' +
+        '<div class="note" style="margin-top:6px">' + sevTxt + ' · ' + pr.produto + '</div>';
       cont.appendChild(c);
     });
     document.getElementById('protocolo-doses').style.display = 'block';
+  }
+
+  // linha de áreas na página de simulação (v4)
+  const areasEl = document.getElementById('areas-sim');
+  if (areasEl && Array.isArray(DADOS.protocolo) && DADOS.protocolo.length) {
+    areasEl.textContent = 'Áreas simuladas · ' + DADOS.protocolo.map(p => p.area).join(' · ');
   }
 })();
 </script>
