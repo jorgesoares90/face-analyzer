@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Mapeamento Facial — Amanda Soares</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#151213; --panel:#1e1a1b; --line:rgba(212,150,130,.30); --line-strong:rgba(212,150,130,.55);
+    --rose:#cf8f7c; --rose-soft:#e9c2af; --rose-deep:#a95c50; --txt:#f0e7e2; --muted:#a2938d;
+    --grad:linear-gradient(135deg,#eec7b1 0%,#cf8f7c 45%,#a95c50 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:1080px 1350px;margin:0}
+  body{font-family:'Montserrat',sans-serif;background:#000;color:var(--txt)}
+  .page{width:1080px;height:1350px;background:var(--ink);position:relative;overflow:hidden;page-break-after:always;padding:64px 64px 56px}
+  .page:last-child{page-break-after:auto}
+  .serif{font-family:'Cormorant Garamond',serif}
+  .script{font-family:'Great Vibes',cursive}
+  .goldtxt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .kicker{font-size:12px;letter-spacing:5px;text-transform:uppercase;color:var(--rose);font-weight:500}
+  .hair{height:1px;background:linear-gradient(90deg,transparent,var(--line-strong),transparent)}
+  .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .hd .brand{display:flex;align-items:center;gap:14px}
+  .hd .mono{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:30px;line-height:1}
+  .hd .bname{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted)}
+  .hd .bname b{color:var(--rose-soft);font-weight:500;letter-spacing:4px}
+  .hd .pg{font-size:12px;letter-spacing:3px;color:var(--muted)}
+  .hd-rule{margin-bottom:34px}
+  .h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.05}
+  .sub{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card .lbl{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .big{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;line-height:1}
+  .note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}
+  .ring{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+  .ring .in{width:60px;height:60px;border-radius:50%;background:var(--panel);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--rose-soft)}
+  .photo-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+  .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo-wrap svg{position:absolute;inset:0;width:100%;height:100%}
+  .ph-tag{position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--rose-soft);background:linear-gradient(transparent,rgba(15,12,13,.88) 45%)}
+  .callout{border-left:2px solid var(--rose);padding:8px 0 8px 14px;margin-bottom:26px}
+  .callout .t{font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--rose-soft);font-weight:600}
+  .callout .d{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:5px}
+  .bar{height:7px;border-radius:4px;background:#2c2627;position:relative;overflow:hidden}
+  .bar i{position:absolute;inset:0;border-radius:4px;background:var(--grad)}
+  table{width:100%;border-collapse:collapse}
+  th{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);text-align:left;font-weight:600;padding:0 14px 12px}
+  td{font-size:13.5px;color:var(--txt);padding:13px 14px;border-top:1px solid rgba(212,150,130,.16);line-height:1.45}
+  td.area{font-weight:600;color:var(--rose-soft);white-space:nowrap}
+  td.obj{color:var(--muted);font-size:12.5px}
+  .disc{border:1px solid var(--line-strong);border-radius:14px;padding:22px 26px;background:rgba(207,143,124,.06)}
+  .disc .t{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--rose-soft);font-weight:600;margin-bottom:10px}
+  .disc p{font-size:12.5px;line-height:1.7;color:#cbbdb6}
+  .foot{position:absolute;left:64px;right:64px;bottom:26px;display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#6e6360}
+</style>
+</head>
+<body>
+
+<!-- ══════════ PÁGINA 1 · CAPA ══════════ -->
+<div class="page" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+  <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:120px;line-height:.9" class="goldtxt">A<span class="script" style="font-size:130px;margin-left:-28px">S</span></div>
+  <div class="script goldtxt" style="font-size:74px;margin-top:14px">Amanda Soares</div>
+  <div style="font-size:14px;letter-spacing:7px;text-transform:uppercase;color:var(--txt);margin-top:10px">Odontologia Especializada</div>
+  <div class="hair" style="width:420px;margin:58px 0 54px"></div>
+  <div class="kicker">Harmonização Orofacial</div>
+  <div class="serif" style="font-size:76px;font-weight:500;margin-top:14px">Mapeamento Facial</div>
+  <div style="font-size:15px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-top:10px">Análise estrutural personalizada</div>
+  <div style="display:flex;gap:70px;margin-top:74px">
+    <div style="text-align:left">
+      <div style="font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)">Análise</div>
+      <div class="serif" style="font-size:26px;margin-top:6px;border-bottom:1px solid var(--line);padding:0 30px 6px 0;min-width:280px">Personalizada · WhatsApp</div>
+    </div>
+    <div style="text-align:left">
+      <div style="font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)">Data da análise</div>
+      <div class="serif" id="data-analise" style="font-size:26px;margin-top:6px;border-bottom:1px solid var(--line);padding:0 30px 6px 0">—</div>
+    </div>
+  </div>
+  <div class="foot"><span>Análise assistida por inteligência artificial</span><span>Revisão · Dra. Amanda Soares</span></div>
+</div>
+
+<!-- ══════════ PÁGINA 2 · ANÁLISE ══════════ -->
+<div class="page">
+  <div class="hd">
+    <div class="brand">
+      <div class="mono goldtxt">A<span class="script" style="font-size:32px;margin-left:-7px">S</span></div>
+      <div class="bname"><b>Amanda Soares</b> · Odontologia Especializada</div>
+    </div>
+    <div class="pg">02 · 03</div>
+  </div>
+  <div class="hair hd-rule"></div>
+
+  <div class="h2">Mapeamento facial <span class="goldtxt">· análise atual</span></div>
+  <div class="sub">Estrutura frontal &nbsp;·&nbsp; pontos de harmonização</div>
+
+  <div style="display:flex;gap:26px;margin-top:34px">
+    <div style="width:236px;display:flex;flex-direction:column;gap:18px">
+      <div class="card">
+        <div class="lbl">Simetria facial</div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="ring" id="ring-simetria"><div class="in" id="val-simetria">—</div></div>
+          <div class="note" style="margin:0">Índice global entre hemifaces</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="lbl">Proporção altura × largura</div>
+        <div class="big goldtxt" id="val-proporcao">—</div>
+        <div class="note">Altura da face ÷ largura bizigomática · referência estética ~1,50</div>
+      </div>
+      <div class="card">
+        <div class="lbl">Mandíbula × zigomático</div>
+        <div class="big goldtxt" id="val-razao">—</div>
+        <div class="note">Largura do ângulo mandibular ÷ largura zigomática · referência ~0,70–0,80</div>
+      </div>
+    </div>
+
+    <div class="photo-wrap" style="width:466px;height:622px;flex:none">
+      <img id="foto-frontal" src="__FOTO__" alt="">
+      <svg id="overlay" preserveAspectRatio="xMidYMid slice" fill="none"></svg>
+      <div class="ph-tag">Mapeamento estrutural · vista frontal</div>
+    </div>
+
+    <div style="flex:1;padding-top:250px">
+      <div class="callout">
+        <div class="t">Arco zigomático</div>
+        <div class="d">Suporte lateral do terço médio · base da sustentação e da luz natural do rosto</div>
+      </div>
+      <div class="callout" style="margin-top:96px">
+        <div class="t">Corpo mandibular</div>
+        <div class="d">Desenho do contorno inferior · define força e ângulo do rosto</div>
+      </div>
+      <div class="callout" style="margin-top:6px">
+        <div class="t">Mento</div>
+        <div class="d">Projeção do queixo · equilibra o perfil e o terço inferior</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:26px;display:flex;gap:34px;align-items:center;padding:22px 26px">
+    <div style="flex:none;width:190px">
+      <div class="lbl" style="margin-bottom:4px">Terços faciais</div>
+      <div class="note" style="margin-top:2px">Proporção vertical · referência ~33% cada</div>
+    </div>
+    <div style="flex:1;display:flex;gap:22px">
+      <div style="flex:1"><div class="tlbl" id="lbl-sup" style="font-size:10.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px">Superior · —</div><div class="bar"><i id="bar-sup" style="width:0%"></i></div></div>
+      <div style="flex:1"><div class="tlbl" id="lbl-med" style="font-size:10.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px">Médio · —</div><div class="bar"><i id="bar-med" style="width:0%"></i></div></div>
+      <div style="flex:1"><div class="tlbl" id="lbl-inf" style="font-size:10.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px">Inferior · —</div><div class="bar"><i id="bar-inf" style="width:0%"></i></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Medidas calculadas sobre 478 pontos faciais detectados por IA</span><span>02</span></div>
+</div>
+
+<!-- ══════════ PÁGINA 3 · CARDÁPIO + AVISO ══════════ -->
+<div class="page">
+  <div class="hd">
+    <div class="brand">
+      <div class="mono goldtxt">A<span class="script" style="font-size:32px;margin-left:-7px">S</span></div>
+      <div class="bname"><b>Amanda Soares</b> · Odontologia Especializada</div>
+    </div>
+    <div class="pg">03 · 03</div>
+  </div>
+  <div class="hair hd-rule"></div>
+
+  <div class="h2">Possibilidades de <span class="goldtxt">harmonização</span></div>
+  <div class="sub">Sujeito à avaliação presencial com a Dra. Amanda Soares</div>
+
+  <!-- ═══ CARDÁPIO — EDITE AQUI: adicione/remova linhas <tr> conforme os procedimentos da clínica ═══ -->
+  <div class="card" style="margin-top:30px;padding:26px 14px 14px">
+    <div class="lbl" style="padding:0 14px">Cardápio de harmonização · escolha as áreas no WhatsApp</div>
+    <table>
+      <tr><th>Área</th><th>Procedimento</th><th>Objetivo</th></tr>
+      <tr><td class="area">Mandíbula</td><td>Preenchimento com ácido hialurônico</td><td class="obj">Contorno e definição da linha mandibular</td></tr>
+      <tr><td class="area">Mento</td><td>Preenchimento com ácido hialurônico</td><td class="obj">Projeção do queixo e harmonia do perfil</td></tr>
+      <tr><td class="area">Zigomático · malar</td><td>Preenchimento com ácido hialurônico</td><td class="obj">Sustentação e projeção do terço médio</td></tr>
+      <tr><td class="area">Lábios</td><td>Preenchimento labial</td><td class="obj">Volume, contorno e hidratação</td></tr>
+      <tr><td class="area">Sulco nasogeniano</td><td>Preenchimento do "bigode chinês"</td><td class="obj">Suavização das linhas de expressão</td></tr>
+      <tr><td class="area">Nariz</td><td>Rinomodelação</td><td class="obj">Refinamento do perfil nasal sem cirurgia</td></tr>
+      <tr><td class="area">Terço superior</td><td>Toxina botulínica</td><td class="obj">Suavização de rugas dinâmicas</td></tr>
+      <tr><td class="area">Face global</td><td>Bioestimulador de colágeno</td><td class="obj">Firmeza e qualidade da pele a médio prazo</td></tr>
+      <tr><td class="area">Pele</td><td>Skinbooster</td><td class="obj">Hidratação profunda e viço</td></tr>
+    </table>
+  </div>
+
+  <div class="disc" style="margin-top:26px">
+    <div class="t">Importante · leia com atenção</div>
+    <p>Este relatório tem caráter exclusivamente ilustrativo e educativo. Ele <b style="color:var(--rose-soft)">não constitui promessa, garantia ou previsão de resultado</b>. Cada pessoa tem uma biologia única — anatomia, qualidade de pele, metabolismo e resposta dos tecidos variam de indivíduo para indivíduo, e os resultados reais podem ser diferentes. A indicação definitiva de qualquer procedimento depende de avaliação clínica presencial com a profissional responsável.</p>
+  </div>
+
+  <div class="foot"><span>Amanda Soares · Odontologia Especializada</span><span>Agende sua avaliação presencial</span></div>
+</div>
+
+<script>
+// ═══ DADOS injetados pelo n8n (JSON do face-analyzer + data) ═══
+const DADOS = __DADOS__;
+
+(function(){
+  const m = DADOS.metricas, p = DADOS.pontos, img = DADOS.imagem;
+
+  document.getElementById('data-analise').textContent = DADOS.data_analise || '';
+
+  // simetria (anel)
+  const ang = Math.round(m.simetria_pct * 3.6);
+  document.getElementById('ring-simetria').style.background =
+    'conic-gradient(#cf8f7c 0 ' + ang + 'deg, #332b2c ' + ang + 'deg 360deg)';
+  document.getElementById('val-simetria').textContent = m.simetria_pct.toFixed(0) + '%';
+
+  // proporções
+  document.getElementById('val-proporcao').textContent = String(m.proporcao_altura_largura).replace('.', ',');
+  document.getElementById('val-razao').textContent = String(m.razao_bigonial_bizigomatica).replace('.', ',');
+
+  // terços
+  const t = m.tercos;
+  const seta = (lbl, bar, nome, v) => {
+    document.getElementById(lbl).textContent = nome + ' · ' + v + '%';
+    document.getElementById(bar).style.width = Math.min(100, v * 2) + '%';
+  };
+  seta('lbl-sup', 'bar-sup', 'Superior', t.superior_pct);
+  seta('lbl-med', 'bar-med', 'Médio', t.medio_pct);
+  seta('lbl-inf', 'bar-inf', 'Inferior', t.inferior_pct);
+
+  // overlay SVG sobre a foto (coordenadas reais do MediaPipe)
+  const svg = document.getElementById('overlay');
+  const NS = 'http://www.w3.org/2000/svg';
+  svg.setAttribute('viewBox', '0 0 ' + img.largura + ' ' + img.altura);
+  const el = (tag, attrs) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    svg.appendChild(e);
+    return e;
+  };
+  const [zeX, zeY] = p.zigomatico_esq, [zdX, zdY] = p.zigomatico_dir;
+  const [geX, geY] = p.gonio_esq, [gdX, gdY] = p.gonio_dir;
+  const [meX, meY] = p.mento, [naX, naY] = p.nasio;
+
+  // linha média
+  el('line', { x1: naX, y1: Math.max(0, naY - img.altura * 0.14), x2: meX, y2: Math.min(img.altura, meY + img.altura * 0.03),
+    stroke: '#e9c2af', 'stroke-width': img.largura * 0.002, 'stroke-dasharray': '2 9', opacity: '.75' });
+  // curva da mandíbula
+  el('path', { d: 'M ' + geX + ' ' + geY + ' Q ' + meX + ' ' + (meY + img.altura * 0.03) + ' ' + gdX + ' ' + gdY,
+    stroke: '#cf8f7c', 'stroke-width': img.largura * 0.0026, 'stroke-dasharray': '1 10', 'stroke-linecap': 'round', opacity: '.9' });
+  // conectores para as legendas (saem pela direita da foto)
+  const con = (x, y, yFim) => el('path', { d: 'M ' + x + ' ' + y + ' L ' + (img.largura * 0.87) + ' ' + yFim + ' L ' + img.largura + ' ' + yFim,
+    stroke: '#cf8f7c', 'stroke-width': img.largura * 0.0017, opacity: '.85' });
+  con(zdX + img.largura * 0.007, zdY, zdY - img.altura * 0.03);
+  con(gdX + img.largura * 0.007, gdY, gdY - img.altura * 0.02);
+  con(meX + img.largura * 0.008, meY, meY + img.altura * 0.02);
+  // pontos
+  [[zeX, zeY], [zdX, zdY], [geX, geY], [gdX, gdY], [meX, meY]].forEach(([x, y]) => {
+    el('circle', { cx: x, cy: y, r: img.largura * 0.0073, fill: '#151213', stroke: '#eec7b1', 'stroke-width': img.largura * 0.002 });
+    el('circle', { cx: x, cy: y, r: img.largura * 0.0027, fill: '#eec7b1' });
+  });
+})();
+</script>
+</body>
+</html>
