@@ -297,16 +297,17 @@ const DADOS = __DADOS__;
   // protocolo sugerido com doses (v3)
   if (Array.isArray(DADOS.protocolo) && DADOS.protocolo.length) {
     const cont = document.getElementById('doses-cards');
+    const compacto = DADOS.protocolo.length >= 6;
     DADOS.protocolo.forEach((pr, i) => {
       const c = document.createElement('div');
       c.className = 'card';
-      c.style.flex = '0 0 31.5%';
-      c.style.padding = '16px 18px';
+      c.style.flex = compacto ? '0 0 23.2%' : '0 0 31.5%';
+      c.style.padding = compacto ? '12px 14px' : '16px 18px';
       const sevTxt = pr.severidade === 'a avaliar' ? 'Indicação a avaliar' : 'Déficit ' + pr.severidade;
       c.innerHTML =
-        '<div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rose-soft);font-weight:600">' + pr.area + '</div>' +
-        '<div class="big goldtxt" style="font-size:32px;margin-top:8px">' + pr.faixa + '</div>' +
-        '<div class="note" style="margin-top:6px">' + sevTxt + ' · ' + pr.produto + '</div>';
+        '<div style="font-size:' + (compacto ? '10.5px' : '12px') + ';letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-soft);font-weight:600">' + pr.area + '</div>' +
+        '<div class="big goldtxt" style="font-size:' + (compacto ? '24px' : '32px') + ';margin-top:8px">' + pr.faixa + '</div>' +
+        '<div class="note" style="margin-top:6px;font-size:' + (compacto ? '10px' : '11px') + '">' + sevTxt + ' · ' + pr.produto + '</div>';
       cont.appendChild(c);
     });
     document.getElementById('protocolo-doses').style.display = 'block';
